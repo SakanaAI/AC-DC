@@ -1,0 +1,35 @@
+# Task generation parameters
+# task_generation:
+max_reflections: 3              # Maximum number of reflection rounds for task improvement
+adapt_initial_pool: false       # If true, adapt the initial task pool using seed models
+grow_seed_pool_with_micro_batches: true # If true, grow seed pool by generating micro batches during initialization
+micro_batch_size: 10            # Size of micro batches when growing seed pool
+use_biased_parent_task_selection: false # If true, use biased parent task selection, else, use uniform parent task selection
+discard_impossible_tasks: true # If true, discard impossible tasks, else, keep them
+experimental_conditional_parent_replacement: true # If true, enable conditional parent replacement for easier/harder adaptations
+use_init_queue_novelty_filtering: true # If true, use novelty filtering (LLM+embedding) when moving tasks from the init queue to the main pool during initialization
+disable_novelty_filter: false   # Disable all novelty filtering
+
+### Adaptation type probabilities
+novel_prompt_probability: 0.8   # For when making task more novel: Probability of making a task completely novel, instead of novel but still related to parent task
+make_novel_not_harder_prompt_probability: 0.0 # For when making task harder: Probability of making a task novel instead of harder
+
+### Similarity search parameters
+do_similarity_search: true      # If true, do similarity search for similar tasks in the vector db
+task_representation: "metadata" # For reprompting LLM, use "metadata" (task description) or "content" (python code) or "all" (both)
+max_similar_tasks: 3            # Maximum number of similar tasks to use for reprompting
+randomize_similar_tasks: true   # If true, randomly select similar tasks up to max_similar_tasks instead of using top results, for adapt inspiration
+use_random_pool_tasks: true    # If true, randomly select tasks from self.tasks instead of using vector DB similarity search, for adapt inspiration
+hard_novelty_filtering: true    # If true, if the task is not novel, discard it. Else, try to make it more novel, but even if not successful, keep it.
+novelty_search_all_adapt_types: false # If true, do novelty search for all adapt types, else. just for adapt_type="novel".
+interestingly_new_llm_check: true # If true, use the LLM-based check to determine if the task is interestingly new, else, use embedding-based check.
+# TODO: Maybe have two thresholds: one for harder/ easier tasks and one for novel tasks
+similarity_threshold: 0.7       # Minimum similarity threshold for similar tasks
+vector_db:
+  embedding_model_name: "intfloat/e5-mistral-7b-instruct" # ~27,655 MiB GPU memory
+  # embedding_model_name: "sentence-transformers/all-MiniLM-L6-v2" # ~820 MiB GPU memory
+  max_seq_length: 1024
+  task_representation_vector_db: "metadata"   # "metadata" (task description) or "content" (python code) or "all" (both)
+  vllm_embedding_server_host: "172.16.0.26"     # Host where vLLM server is running
+  vllm_embedding_server_port: 8010            # Port where vLLM server is running
+  embedding_vllm_url: "http://${task_generation.vector_db.vllm_embedding_server_host}:${task_generation.vector_db.vllm_embedding_server_port}/v1" # Base URL for vLLM OpenAI API

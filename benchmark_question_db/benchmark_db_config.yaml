@@ -1,0 +1,75 @@
+# Configuration for Benchmark Question Vector Database
+
+# Vector Database Settings
+vector_db:
+  storage_path: "./benchmark_vector_db"
+  embedding_model_name: "all-MiniLM-L6-v2"
+  embedding_vllm_url: "http://localhost:8010/v1"
+  task_representation: "content"  # Embed question content only
+
+# Sampling Strategy
+sampling:
+  samples_per_subgroup: 10  # For benchmarks with categories/subjects
+  samples_no_subgroup: 30   # For benchmarks without categories
+  random_seed: 42           # For reproducibility
+
+# Development Settings
+development:
+  mock_embeddings: false    # Set to true for testing without embedding server
+  verbose_logging: false    # Enable detailed logging
+
+# Benchmarks to Include
+benchmarks:
+  mmlu:
+    enabled: true
+    description: "Massive Multitask Language Understanding"
+    subgroups: true
+    expected_samples: 570  # 10 per subject × 57 subjects
+
+  mmlu_pro:
+    enabled: true
+    description: "MMLU Pro (harder version)"
+    subgroups: true
+    expected_samples: 140  # 10 per category × 14 categories
+
+  bigbench_hard:
+    enabled: true
+    description: "Big Bench Hard reasoning tasks"
+    subgroups: true
+    expected_samples: 270  # 10 per task × 27 tasks
+
+  math:
+    enabled: true
+    description: "MATH dataset (competition math problems)"
+    subgroups: true
+    expected_samples: 70   # 10 per category × 7 categories
+
+  gsm8k:
+    enabled: true
+    description: "Grade School Math 8K"
+    subgroups: false
+    expected_samples: 30
+
+  humaneval:
+    enabled: true
+    description: "HumanEval code generation"
+    subgroups: false
+    expected_samples: 30
+
+  mbpp:
+    enabled: true
+    description: "Mostly Basic Python Problems"
+    subgroups: false
+    expected_samples: 30
+
+  gpqa:
+    enabled: true
+    description: "Graduate-Level Google-Proof Q&A Benchmark"
+    source: "huggingface"
+    dataset_name: "Idavidrein/gpqa"
+    subset: "gpqa_main"
+    split: "train"
+    subgroups: true
+    expected_samples: 30  # 10 per domain × 3 domains
+
+# Total Expected Samples: ~1,170

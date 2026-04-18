@@ -1,0 +1,5 @@
+big_model: "Qwen2.5-72B-Instruct"
+control: "Qwen2.5-7B-Instruct"
+expert_1: "Qwen2.5-Coder-7B-Instruct"
+expert_2: "Qwen2.5-7B-Instruct/seed_43"
+expert_3: "Qwen2.5-Math-7B-Instruct"

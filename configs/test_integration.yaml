@@ -1,0 +1,134 @@
+defaults:
+  - evo/crossover: model_linear
+  - evo/mutation: svd_model_weights_gaussian_noise
+  - docker_sandbox: default
+  - celery: default
+  - task_generation: default
+  - acdc: default
+  - dns: default
+  - _self_  # IMPORTANT: _self_ at the end means this config overrides all defaults above
+
+# Enable AC/DC integration
+use_ac_dc: true
+
+
+gpu_memory_utilization: 0.5  # Reduced for testing
+
+svd_expert_names: # null
+  - "csbench"
+  - "gsm8k"
+  - "instruct"
+
+# For qwen 2 7B
+base_model_path: "Qwen/Qwen2-7B"
+seed_model_paths:
+  - "Grogros/Qwen2-7B-OurSafecoder"
+  - "Qwen/Qwen2-Math-7B-Instruct"
+  - "Qwen/Qwen2-7B-Instruct"
+model_stop_token_ids: [151643, 151645]
+chat_template: "qwen2"
+
+# Logging and monitoring - DISABLED FOR TESTING
+use_wandb: false
+wandb:
+  entity: "your_wandb_entity"
+  project: "acdc"
+  name: "acdc"
+
+# No validation tasks for fast testing
+validation_tasks: []
+
+# Ray configuration - disabled for testing
+frac_gpu:
+  enabled: false
+  gpu_fraction: 0.1
+  workers_per_gpu: 1
+  worker_id_in_gpu: 0
+
+vllm_pop:
+  stop_token_ids: ${model_stop_token_ids}
+  max_tokens: 64  # Reduced for testing
+  temperature: 0.0
+  top_p: 1.0
+  eval_cot: true
+
+# Evaluation parameters - faster for testing
+evaluation:
+  max_retries: 1 # Reduced
+
+# Output configuration - use dedicated test directory
+output_dir: "outputs_tests/test_integration"
+
+# Random seed for reproducibility
+seed: 42
+
+# Disk cleaning configuration - disabled during test
+disk_cleaning_interval: 999
+model_cleanup_skip_interval: 1
+save_init_gen_models: true
+
+# Wandb additional settings
+wandb_resume_id: null
+
+# Restart configuration
+restart_dir: null
+
+# ====================================
+# LIGHTWEIGHT TEST OVERRIDES
+# ====================================
+# These override the defaults loaded from configs/celery/, configs/dns/, configs/acdc/
+# Because _self_ is at the END of the defaults list above, these values take precedence
+
+# Celery configuration - solo mode for testing
+celery:
+  name: "test_integration"
+  mode: "solo"  # Solo mode for testing (single process)
+  timeout: 600  # 10 minutes timeout
+  num_workers: 1
+  broker: "pyamqp://guest@localhost:5672//"
+  backend: "redis://default:user@localhost:6379/0"
+
+# DNS configuration - minimal for testing
+dns:
+  init_population_size: 3  # Reduced from 16
+  init_population_with_seed_models: true
+  population_size: 3
+  num_generations: 2  # Reduced from 50
+  disable_mutation: false
+  k_neighbors: 2  # Reduced from 3
+  dominated_score: 999.0
+  use_skill_ratio: true
+  use_difficulty_weights: true
+  skill_ratio_to_full: true
+  use_top_fitness_selection: false
+  acdc_skill_threshold: 0.5
+  run_gibberish_check: false  # Disabled for speed
+  n_min_init_pop_promises: 4  # Reduced from 8
+  num_model_per_gen: 2  # Reduced from 8
+  max_details_to_log: 5  # Reduced from 10
+
+# ACDC configuration - minimal for testing
+acdc:
+  seed_tasks_dir: "seed_tasks"
+  tasks_output_dir: "${output_dir}/generated_tasks"
+  initial_pool_size: 5  # Reduced from 300
+  max_pool_size: 5  # Reduced from 250
+  task_generation_interval: 1  # Test adaptation early
+  new_tasks_per_generation: 3  # Reduced from 150
+  num_initialization_workers: 2  # Reduced from 128
+  num_adaptation_workers: 2  # Reduced from 128
+  num_sandbox_workers: 2  # Reduced from 16
+  difficulty_threshold_easy: 0.5
+  difficulty_threshold_hard: 0.0
+  stop_token_ids: ${model_stop_token_ids}
+  scientist_model: "vllm/Qwen/Qwen2.5-72B-Instruct"
+  task_creation_prompt_name: "task_creation_system_msg"
+  vllm_enabled: true
+  vllm_server_host: "172.16.0.34"
+  vllm_server_port: 8001
+  scientist_vllm_url: "http://${acdc.vllm_server_host}:${acdc.vllm_server_port}/v1"
+  vllm_max_retries: 3  # Reduced from 5
+  vllm_timeout: 30  # Reduced from 60
+  vllm_max_tokens: 200  # Reduced from 2000
+  vllm_temperature: 0.7
+  vllm_top_p: 0.95

@@ -1,0 +1,24 @@
+# DNS configuration
+# dns:
+init_population_size: 16
+init_population_with_seed_models: true
+population_size: 16
+num_generations: 50
+disable_mutation: false  # If true, only perform crossover without mutation
+
+# DNS Archive Update Parameters (Simplified - No Skill Dominance Filtering)
+k_neighbors: 3                # Number of nearest neighbors for novelty computation
+dominated_score: 999.0        # Score assigned to non-dominated solutions (high value)
+use_skill_ratio: true         # If true, compute novelty based on unique skills relative to stronger solutions (vs. Hamming distance)
+use_difficulty_weights: true  # If true, weight skill distances by task difficulty
+skill_ratio_to_full: true     # If true, compute skill ratio against total skill vector length instead of only unsolved skills
+
+# Archive Selection Strategy
+use_top_fitness_selection: false  # If true, use top-fitness only selection instead of quality-diversity approach
+acdc_skill_threshold: 0.5      # Threshold to convert AC/DC float scores to boolean for skill_vector
+run_gibberish_check: true     # If true, run gibberish check
+n_min_init_pop_promises: 8    # Minimum number of initial population promises to create - this redundancy is used to increase the chance of getting enough models
+num_model_per_gen: 8         # Number of models to generate per generation
+
+# DNS archive logging parameters
+max_details_to_log: 10

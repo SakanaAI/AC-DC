@@ -1,0 +1,9 @@
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    include_seed_models:
+    - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+    - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+    - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: global_skill_vector_coverage

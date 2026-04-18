@@ -1,0 +1,3 @@
+_target_: mutation.svd_model_weights_gaussian_mutator.SVDModelWeightsGaussianMutator
+mutation_rate: 0.25
+keep_rank: 256

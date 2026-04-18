@@ -1,0 +1,5 @@
+big_model: "Meta-Llama-3-70B-Instruct"
+control: "Meta-Llama-3-8B-Instruct"
+expert_1: "Llama-3-8B-Instruct-Coding-Expert"
+expert_2: "Meta-Llama-3-8B-Instruct/seed_43"
+expert_3: "Meta-Llama-3-8B-Instruct_gsm8k_English"

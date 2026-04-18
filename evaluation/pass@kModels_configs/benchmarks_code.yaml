@@ -1,0 +1,2 @@
+humaneval_instruct: "pass@1,create_test"
+mbpp_instruct: "pass_at_1,extract_code"

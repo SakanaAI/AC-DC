@@ -1,0 +1,42 @@
+evalplus
+fasttext-wheel==0.9.2
+matplotlib
+optuna==3.6.1
+jsonlines==4.0.0
+datasets==2.18.0
+openai
+torch
+torchvision
+torchaudio
+vllm==0.10.0
+cmaes==0.10.0
+numpy==1.26.4
+cma
+hydra-core
+wandb
+accelerate
+celery==5.5.1
+redis
+requests==2.31.0
+pymysql
+anthropic # just in case we use it
+docker>=6.0 # For sandbox execution
+backoff
+sentence-transformers
+vendi_score
+# flash-attn==2.8.1
+# For evaluation with lm-harness
+langdetect
+immutabledict
+flashinfer-python==0.2.2
+hf_xet
+# task embedding evolution gif
+imageio
+kaleido==0.2.1
+# Vizualisations
+scikit-learn==1.6.1
+plotly==6.0.1
+streamlit==1.45.0
+gradio==5.41.0
+# testing
+pytest

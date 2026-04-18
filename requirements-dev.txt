@@ -1,0 +1,28 @@
+# Development dependencies for ACDC testing
+
+# Testing framework
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+pytest-timeout>=2.1.0
+pytest-xdist>=3.0.0  # For parallel test execution
+
+# Property-based testing (optional but recommended)
+hypothesis>=6.0.0
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
+isort>=5.12.0
+
+# Mocking and fixtures
+factory-boy>=3.2.0
+faker>=18.0.0
+responses>=0.23.0  # For mocking HTTP requests
+
+# For mocking Celery workers
+celery-mock>=0.0.3
+
+# Debugging
+ipdb>=0.13.0

@@ -1,0 +1,41 @@
+# ACDC task generation settings
+# acdc:
+# Task directory configuration
+seed_tasks_dir: "seed_tasks"
+tasks_output_dir: "${output_dir}/generated_tasks" # General output for ACDC related files if needed elsewhere
+initial_pool_size: 300 # Number of tasks to generate initially, 500
+
+# Task adaptation parameters
+max_pool_size: 250
+task_generation_interval: 5  # Generate new tasks every N generations
+new_tasks_per_generation: 150  # Number of new tasks to generate each time
+num_initialization_workers: 128 # Number of parallel workers for initial pool generation (null = cpu_count)
+num_adaptation_workers: 128   # Number of parallel workers for task adaptation (null = cpu_count)
+num_sandbox_workers: 16
+# num_sandbox_workers: 4
+
+# Task difficulty settings
+difficulty_threshold_easy: 0.5  # Tasks with pass rate > this are considered easy
+difficulty_threshold_hard: 0.  # Tasks with pass rate < this are considered hard
+
+# Stopping criteria for model generation
+stop_token_ids: ${model_stop_token_ids} # EOS tokens for the merged models
+
+# LLM configuration for task generation and evaluation
+# For scientist model, we use a locally running vLLM server
+# For subject model, we use a model from the population
+scientist_model: "vllm/Qwen/Qwen2.5-72B-Instruct"  # Model identifier (can be ACDC standard or vllm/...)
+# scientist_model: "vllm/Qwen/Qwen3-235B-A22B-Instruct-2507"  # Model identifier (can be AC/DC standard or vllm/...)
+task_creation_prompt_name: "task_creation_system_msg" # Name of the prompt variable in dns.
+# task_creation_prompt_name: "task_creation_system_msg_no_judge" # Name of the prompt variable in dns.
+
+# vLLM server configuration for scientist model
+vllm_enabled: true                # Whether to use vLLM for the scientist model
+vllm_server_host: "172.16.0.35"     # Host where vLLM server is running
+vllm_server_port: 8001            # Port where vLLM server is running
+scientist_vllm_url: "http://${acdc.vllm_server_host}:${acdc.vllm_server_port}/v1" # Base URL for vLLM OpenAI API
+vllm_max_retries: 5               # Maximum number of retries for vLLM operations
+vllm_timeout: 60                  # Timeout for vLLM requests in seconds
+vllm_max_tokens: 2000             # Maximum tokens for task generation
+vllm_temperature: 0.7             # Temperature for task generation
+vllm_top_p: 0.95                  # Top-p sampling parameter

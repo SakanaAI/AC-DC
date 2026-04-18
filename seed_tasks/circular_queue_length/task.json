@@ -1,0 +1,7 @@
+{
+    "name_of_task": "circular_queue_length",
+    "description_of_task": "Calculate the length of a circular queue given its array size, front, and rear pointers.",
+    "capability_being_measured": "data_structures_algorithms",
+    "estimated_human_difficulty": "4",
+    "example_instruction": "Given that the storage space for a circular queue is the array A[21], with front pointing to the position before the head element and rear pointing to the tail element, assuming the current values of front and rear are 8 and 3, respectively, the length of the queue is ().\nA: 5\nB: 6\nC: 16\nD: 17"
+}

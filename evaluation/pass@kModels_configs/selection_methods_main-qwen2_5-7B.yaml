@@ -1,0 +1,177 @@
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: global_skill_vector_coverage
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: global_skill_vector_coverage_all_experts
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: fitness
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: global_skill_vector_fitness
+
+- func_name: get_top_n_models_randomly
+  kwargs:
+    seed: 42
+    relevant_gens:
+      - 5
+      - 10
+      - 15
+      - 20
+      - 25
+      - 30
+      - 35
+      - 40
+      - 45
+      - 50
+  save_name: random_seed_42
+
+# Selection methods for coevo scaling plot #############################
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 0
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_0_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 5
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_5_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 10
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_Qwen2.5-Coder-7B-Instruct"
+      - "gen_0_ind_Qwen2.5-Math-7B-Instruct"
+  save_name: gsvc_max_gen_10_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 15
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_15_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 20
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_20_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 25
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_25_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 30
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_30_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 35
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_35_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 40
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_40_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 45
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_45_w_task_filtering
+
+- func_name: get_top_n_models_based_on_global_skill_vector
+  kwargs:
+    selection_method: coverage
+    max_gen: 50
+    do_max_gen_task_filtering: true
+    include_seed_models:
+      - "gen_0_ind_Qwen2.5-7B-Instruct"
+    exclude_seed_models:
+      - "gen_0_ind_R1-Qwen2.5-7B-Instruct-code"
+      - "gen_0_ind_Neumind-Math-7B-Instruct"
+  save_name: gsvc_max_gen_50_w_task_filtering

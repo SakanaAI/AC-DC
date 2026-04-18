@@ -1,0 +1,7 @@
+{
+    "name_of_task": "first_repeated_character",
+    "description_of_task": "Write a Python function to find the first repeated character in a given string.",
+    "capability_being_measured": "string_manipulation",
+    "estimated_human_difficulty": "2",
+    "example_instruction": "Write a python function to find the first repeated character in a given string."
+}

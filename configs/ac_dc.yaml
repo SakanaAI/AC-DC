@@ -1,0 +1,77 @@
+defaults:
+  - _self_
+  - evo/crossover: model_linear
+  - evo/mutation: svd_model_weights_gaussian_noise
+  - docker_sandbox: default
+  - celery: default
+  # - experts: default
+  - task_generation: default
+  - acdc: default
+  - dns: default
+
+# Enable AC/DC integration
+use_ac_dc: true
+
+gpu_memory_utilization: 0.8
+
+svd_expert_names: # null
+  - "csbench"
+  - "gsm8k"
+  - "instruct"
+
+# For qwen 2 7B
+# base_model_path: "Qwen/Qwen2-7B"
+# seed_model_paths:
+#   - "Grogros/Qwen2-7B-OurSafecoder"
+#   - "Qwen/Qwen2-Math-7B-Instruct"
+#   - "Qwen/Qwen2-7B-Instruct"
+# model_stop_token_ids: [151643, 151645] # also for qwen 2
+# chat_template: "qwen2"
+
+# base_model_path: "Qwen/Qwen2.5-7B"
+seed_model_paths:
+  - "Qwen/Qwen2.5-Coder-7B-Instruct"
+  - "Qwen/Qwen2.5-Math-7B-Instruct"
+  - "Qwen/Qwen2.5-7B-Instruct"
+model_stop_token_ids: [151643, 151645]
+chat_template: "qwen2_5" # "llama3", "qwen2", "qwen2_5", "<custom>"
+
+# Logging and monitoring
+use_wandb: true
+wandb:
+  entity: "your_wandb_entity"
+  project: "acdc"
+  name: "acdc"
+
+validation_tasks:
+  - csbench
+  - gsm8k
+  # - mbpp
+
+vllm_pop:
+  stop_token_ids: ${model_stop_token_ids} # EOS tokens for the merged models
+  max_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  eval_cot: true
+
+# Evaluation parameters
+evaluation:
+  max_retries: 3                 # Maximum retries for failed evaluations
+
+# Output configuration
+output_dir: "outputs/acdc"
+
+# Random seed for reproducibility
+seed: 42
+
+# Disk cleaning configuration
+disk_cleaning_interval: 2        # Clean up old models every N generations
+model_cleanup_skip_interval: 5   # 25 for long run, 5 otherwise. Do not delete models for every Nth generation (e.g., keep all models for generations that are multiples of this interval).
+save_init_gen_models: true       # Keep Gen 0 Checkpoints for later eval
+
+# Wandb additional settings
+wandb_resume_id: null
+
+# Restart configuration
+restart_dir: null  # Path to checkpoint directory for restarting runs (e.g., '/path/to/outputs/2025-05-26/12-13-52')

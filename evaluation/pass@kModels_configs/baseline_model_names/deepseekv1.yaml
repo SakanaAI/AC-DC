@@ -1,0 +1,5 @@
+big_model: "deepseek-llm-67b-chat"
+control: "deepseek-llm-7b-chat"
+expert_1: "deepseek-coder-7b-base-v1.5"
+expert_2: "deepseek-llm-7b-chat/seed_43"
+expert_3: "deepseek-math-7b-instruct"

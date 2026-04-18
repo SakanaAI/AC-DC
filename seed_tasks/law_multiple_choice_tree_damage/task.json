@@ -1,0 +1,7 @@
+{
+    "name_of_task": "law_multiple_choice_tree_damage",
+    "description_of_task": "Answer a multiple-choice question related to law, specifically about liability and recourse in a scenario involving property damage.",
+    "capability_being_measured": "legal_reasoning",
+    "estimated_human_difficulty": "6",
+    "example_instruction": "House owns his home in City. On the lawn in front of his home and within five feet of the public sidewalk there was a large tree. The roots of the tree caused the sidewalk to buckle severely and become dangerous. An ordinance of City requires adjacent landowners to keep sidewalks in safe condition. House engaged Contractor to repair the sidewalk, leaving it to Contractor to decide how the repair should be made. Contractor dug up the sidewalk, cut back the roots of the tree, and laid a new sidewalk. Two days after House had paid Contractor the agreed price of the repair, the tree fell over onto the street and damaged a parked car belonging to Driver. Driver has asserted claims against House and Contractor, and both defendants admit that cutting the roots caused the tree to fall.If Driver recovers a judgment against House, does House have any recourse against Contractor?\nOption A: \"No, if payment by House was an acceptance of the work.\"\nOption B: \"No, because House selected Contractor to do the work.\"\nOption C: \"Yes, if the judgment against House was based on vicarious liability.\"\nOption D: \"Yes, because House's conduct was not a factual cause of the harm.\""
+}

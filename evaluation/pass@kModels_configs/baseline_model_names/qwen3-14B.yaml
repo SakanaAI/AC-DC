@@ -1,0 +1,5 @@
+big_model: "Qwen3-235B-A22B-Instruct-2507"
+control: "Qwen3-14B"
+expert_1: "qwen-3-14b-code-and-math-reasoning"
+expert_2: "Qwen3-14B/seed_43"
+expert_3: "Qwen3-14B-Intuitor-MATH-1EPOCH"

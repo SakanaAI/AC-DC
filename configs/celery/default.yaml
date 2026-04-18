@@ -1,0 +1,6 @@
+name: "example"
+mode: "solo" # "solo" (for running as standalone script) or "main" or "worker" (overridden with command line)
+timeout: 8000
+num_workers: 1 # 1 default, batch size control for QD
+broker: "pyamqp://guest@localhost:5672//"
+backend: "redis://default:user@localhost:6379/0"

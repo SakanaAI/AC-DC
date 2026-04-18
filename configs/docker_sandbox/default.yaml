@@ -1,0 +1,19 @@
+# Docker sandbox configuration
+# docker_sandbox:
+image: "acdc-sandbox:latest" # Use the custom image built from docker/sandbox/Dockerfile
+memory_limit: "512m"  # Memory limit
+timeout: 30           # Base execution timeout in seconds (will be extended for LLM judge)
+max_retries: 3        # Maximum number of retries for Docker operations
+initial_backoff: 1.0  # Initial backoff time for retries (seconds)
+
+# LLM Judge timeout configuration
+llm_judge_timeout: 60      # Timeout for individual LLM judge API calls (seconds)
+llm_judge_max_retries: 3   # Max retries for LLM judge calls
+llm_judge_initial_delay: 1.0  # Initial retry delay for LLM judge (seconds)
+llm_judge_max_delay: 60.0  # Maximum retry delay for LLM judge (seconds)
+
+# Docker security and resource limits
+security_level: "high"  # Security level (low, medium, high)
+pid_limit: 50           # Maximum number of processes
+ulimit_nproc: 20        # Process limit for user
+ulimit_nofile: 64       # File descriptors limit
