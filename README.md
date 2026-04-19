@@ -1,4 +1,15 @@
-# AC/DC
+<div align="center">
+
+<h1>AC/DC: Discovering Novel LLM Experts via Task-Capability Coevolution</h1>
+
+<p>
+<a href="https://arxiv.org/abs/2604.14969"><img src="https://img.shields.io/badge/arXiv-2604.14969-b31b1b.svg?style=for-the-badge&logo=arxiv" alt="arXiv"></a>
+<a href="https://acdc-llm.github.io/"><img src="https://img.shields.io/badge/-Project%20Page-%238D6748?style=for-the-badge&logo=OpenStreetMap&logoColor=white" alt="Project Page"></a>
+</p>
+
+---
+
+</div>
 
 Assessment Coevolving with Diverse Capabilities (AC/DC) is a system framework for coevolving populations of large language models (LLMs) and synthetic tasks that challenge them. The system coordinates task generation, model crossover/mutation, distributed evaluation, and archive management to surface models that excel on diverse, emerging capabilities.
 
@@ -190,3 +201,13 @@ streamlit run visualization/show_evolution_of_models.py <path_to_experiment_dir>
 ## Acknowledgments
 
 We thank the authors that released [Dominated Novelty Search (DNS)](https://arxiv.org/abs/2502.00593) and [Automated Capability Discovery (ACD)](https://arxiv.org/abs/2502.07577) for inspiring research and development of our AC/DC framework.
+
+## Cite as
+```bibtex
+@article{dai2026discovering,
+  title={Discovering Novel LLM Experts via Task-Capability Coevolution},
+  author={Dai, Andrew and Meinardus, Boris and Regan, Ciaran and Tian, Yingtao and Tang, Yujin},
+  journal={arXiv preprint arXiv:2604.14969},
+  year={2026}
+}
+```
